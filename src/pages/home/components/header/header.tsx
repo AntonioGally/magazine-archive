@@ -8,9 +8,6 @@ const Header = () => {
                 Revistas indexadas
             </h1>
             <div>
-                <Link to={"/signup"}>
-                    <Button variant={"outline"}>Cadastro</Button>
-                </Link>
                 <Link to={"/login"}>
                     <Button className="mt-2 md:ml-2 md:mt-0" variant={"default"}>Login</Button>
                 </Link>
