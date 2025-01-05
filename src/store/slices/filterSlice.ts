@@ -21,13 +21,13 @@ export const filterSlice = createSlice({
     initialState,
     reducers: {
         setTitle: (state, action: { payload: string }) => {
-            state.filters.title = action.payload;
+            state.filters.title = action.payload.trim().toLowerCase();
         },
         setAuthor: (state, action: { payload: string }) => {
-            state.filters.author = action.payload;
+            state.filters.author = action.payload.trim().toLowerCase();
         },
         setAbstract: (state, action: { payload: string }) => {
-            state.filters.abstract = action.payload;
+            state.filters.abstract = action.payload.trim().toLowerCase();
         },
     },
 });
