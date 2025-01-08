@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { initializeFirestore } from "firebase/firestore";
 import { getAnalytics } from "firebase/analytics";
+import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
     apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -17,5 +18,6 @@ const app = initializeApp(firebaseConfig, "magazine-archive");
 
 export const analytics = getAnalytics(app);
 export const db = initializeFirestore(app, {}, "magazine-archive");
+export const auth = getAuth(app)
 
 export default app;
