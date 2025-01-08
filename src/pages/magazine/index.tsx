@@ -18,8 +18,8 @@ const Magazine = () => {
     return (
         <div className="p-4 lg:p-10 max-w-[1400px] mx-auto">
             {/* header */}
-            <div className="flex items-center justify-between">
-                <div className="flex items-center">
+            <div className="flex flex-col md:flex-row md:items-center justify-between">
+                <div className="flex flex-col md:flex-row md:items-center">
                     <Link to={"/"}>
                         <Button className="mr-4" variant={"outline"}><ArrowLeft />Voltar</Button>
                     </Link>
@@ -44,7 +44,7 @@ const Magazine = () => {
                     <p className="leading-7 text-justify">{data.abstract}</p>
                 </div>
                 <div>
-                    <span className="font-semibold text-lg">Fonte:</span>
+                    <span className="font-semibold text-lg break-words">Fonte:</span>
                     <p className="leading-7 text-justify">{data.source}</p>
                 </div>
             </div>

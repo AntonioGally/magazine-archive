@@ -96,7 +96,7 @@ const MagazineRegister = () => {
                     <Button variant={"outline"}><ArrowLeft /> Voltar</Button>
                 </Link>
                 <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
-                    Revistas cadastradas
+                    Cadastro de revista
                 </h3>
             </div>
             <Form {...form}>

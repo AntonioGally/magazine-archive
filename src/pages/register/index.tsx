@@ -12,7 +12,7 @@ const Register = () => {
         <div className="w-full">
             <div className="flex items-center justify-between">
                 <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
-                    Revistas cadastradas
+                    Revistas cadastradas ({data?.length})
                 </h3>
                 <Link to={"/register/new"}>
                     <Button><Plus />Nova</Button>
