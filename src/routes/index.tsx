@@ -1,13 +1,19 @@
+// Libs
 import { BrowserRouter, Routes, Route } from "react-router";
+import { useSelector } from "react-redux";
+import useAuthListener from "./hooks/use-auth-listener";
+// Types
+import { RootState } from "@/store";
 // Pages
 import Home from "@/pages/home";
 import Login from "@/pages/login";
 import Logout from "@/pages/logout";
 import Magazine from "@/pages/magazine";
-import { useSelector } from "react-redux";
-import { RootState } from "@/store";
-import Panel from "@/pages/panel/panel";
-import useAuthListener from "./hooks/use-auth-listener";
+import Panel from "@/pages/panel";
+import Register from "@/pages/register";
+// Layout
+import Layout from "@/layouts/panel-layout";
+
 
 const Router = () => {
     useAuthListener();
@@ -17,7 +23,10 @@ const Router = () => {
         if (isAuthenticated) {
             return (
                 <>
-                    <Route path="/panel" element={<Panel />} />
+                    <Route element={<Layout />}>
+                        <Route path="/panel" element={<Panel />} />
+                        <Route path="/register" element={<Register />} />
+                    </Route>
                 </>
             )
         }

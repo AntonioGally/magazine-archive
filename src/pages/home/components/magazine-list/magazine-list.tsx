@@ -10,7 +10,7 @@ const MagazineList = () => {
     ));
 
     return (
-        <div className="mt-4">
+        <div className="mt-8">
             <div className="max-w-[730px]">
                 {data && data.map(magazine => (
                     <MagazineItem {...magazine} key={magazine.id} />
