@@ -13,5 +13,11 @@ export const columns: ColumnDef<Magazine>[] = [
     {
         accessorKey: "createdAt",
         header: "Criação",
+        // cell: ({ row }) => {
+        //     const createdAt = row.getValue("createdAt") as any;
+        //     console.log(createdAt);
+
+        //     return <div className="text-right font-medium">{createdAt}</div>
+        // },
     },
 ]

@@ -4,6 +4,7 @@ import { DataTable } from "./data-table"
 import { columns } from "./columns"
 import useMagazineList from "../home/components/magazine-list/magazine-list.api"
 import { Skeleton } from "@/components/ui/skeleton"
+import { Link } from "react-router"
 
 const Register = () => {
     const { data, isLoading } = useMagazineList();
@@ -13,7 +14,9 @@ const Register = () => {
                 <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
                     Revistas cadastradas
                 </h3>
-                <Button><Plus />Nova</Button>
+                <Link to={"/register/new"}>
+                    <Button><Plus />Nova</Button>
+                </Link>
             </div>
             <div className="mt-8">
                 {!data || isLoading ? (

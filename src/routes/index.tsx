@@ -13,6 +13,7 @@ import Panel from "@/pages/panel";
 import Register from "@/pages/register";
 // Layout
 import Layout from "@/layouts/panel-layout";
+import MagazineRegister from "@/pages/register/magazine-register/magazine-register";
 
 
 const Router = () => {
@@ -26,6 +27,8 @@ const Router = () => {
                     <Route element={<Layout />}>
                         <Route path="/panel" element={<Panel />} />
                         <Route path="/register" element={<Register />} />
+                        <Route path="/register/new" element={<MagazineRegister />} />
+                        <Route path="/register/:magazineId" element={<MagazineRegister />} />
                     </Route>
                 </>
             )
