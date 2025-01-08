@@ -2,6 +2,9 @@ import { Link } from "react-router";
 import { Magazine } from "../../../../types";
 
 const MagazineItem = ({ title, author, abstract, id }: Magazine) => {
+    function formatBastract(abstract: string) {
+        return abstract.length > 180 ? `${abstract.slice(0, 180)}...` : abstract
+    }
     return (
         <Link to={`/magazine/${id}`} className="block">
             <div className="w-full mb-5 transition-opacity hover:opacity-50">
@@ -15,7 +18,7 @@ const MagazineItem = ({ title, author, abstract, id }: Magazine) => {
                 </div>
 
                 <p className="leading-7">
-                    {abstract}
+                    {formatBastract(abstract)}
                 </p>
 
                 <div className="h-[1px] w-full bg-slate-200 mt-3" />

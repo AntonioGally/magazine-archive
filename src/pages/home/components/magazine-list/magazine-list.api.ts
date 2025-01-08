@@ -11,7 +11,7 @@ const useMagazineList = () => {
             map((doc) => ({
                 id: doc.id,
                 ...(doc.data() as Omit<Magazine, "id">),
-                createdAt: doc.data().createdAt?.toDate().toLocaleString('pt-br'),
+                createdAt: doc.data().createdAt?.toDate().toISOString(),
             }));
     }
 

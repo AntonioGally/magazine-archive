@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "magazine-7fab5",
     "public": "dist",
     "ignore": [
       "firebase.json",

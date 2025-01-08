@@ -41,11 +41,11 @@ const Magazine = () => {
                 </div>
                 <div>
                     <span className="font-semibold text-lg">Resumo:</span>
-                    <p className="leading-7">{data.abstract}</p>
+                    <p className="leading-7 text-justify">{data.abstract}</p>
                 </div>
                 <div>
                     <span className="font-semibold text-lg">Fonte:</span>
-                    <p className="leading-7">{data.source}</p>
+                    <p className="leading-7 text-justify">{data.source}</p>
                 </div>
             </div>
         </div>
