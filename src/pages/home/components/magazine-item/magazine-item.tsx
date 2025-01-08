@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { Magazine } from "../../types";
+import { Magazine } from "../../../../types";
 
 const MagazineItem = ({ title, author, abstract, id }: Magazine) => {
     return (

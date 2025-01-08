@@ -1,6 +1,6 @@
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "@/config/firebase";
-import { Magazine } from "../home/types";
+import { Magazine } from "../../types";
 import { useQuery } from "@tanstack/react-query";
 
 const useGetMagazine = (id: string | undefined) => {

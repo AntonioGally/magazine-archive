@@ -6,4 +6,6 @@ export interface Magazine {
     pdf_link: string;
     source: string;
     title: string;
+    raw_title: string;
+    createdAt: string;
 }

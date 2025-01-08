@@ -11,7 +11,7 @@ const useSearch = () => {
     const handleSearch = useCallback(
         debounce((query: string, action: ActionCreatorWithPayload<string, string>) => {
             dispatch(action(query));
-        }, 300),
+        }, 100),
         []
     );
 
