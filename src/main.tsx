@@ -4,6 +4,7 @@ import { createRoot } from 'react-dom/client'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 // Components
 import Router from './routes/index.tsx';
+import { Toaster } from './components/ui/toaster.tsx';
 import { Provider } from 'react-redux';
 // Scriptrs
 import { store } from './store/index.ts';
@@ -16,6 +17,7 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
       <Provider store={store}>
+        <Toaster />
         <Router />
       </Provider>
     </QueryClientProvider>

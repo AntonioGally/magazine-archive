@@ -10,4 +10,5 @@ export interface Magazine {
     title: string;
     raw_title: string;
     createdAt: FieldValue;
+    createdBy: string;
 }
