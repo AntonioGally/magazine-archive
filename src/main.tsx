@@ -10,7 +10,7 @@ import { store } from './store/index.ts';
 // Css
 import "./style/global.css"
 
-const queryClient = new QueryClient();
+export const queryClient = new QueryClient();
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
