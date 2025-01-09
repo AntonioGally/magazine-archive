@@ -44,9 +44,13 @@ export const columns: ColumnDef<Magazine>[] = [
         },
     },
     {
+        accessorKey: "views",
+        header: "Visualizações",
+    },
+    {
         accessorKey: "createdAt",
         header: "Criação",
-        cell: ({ row }) => new Date(row.original.createdAt).toLocaleDateString("pt-BR"),
+        cell: ({ row }) => new Date(row.original.createdAt).toLocaleString("pt-BR"),
     },
     {
         accessorKey: "createdBy",

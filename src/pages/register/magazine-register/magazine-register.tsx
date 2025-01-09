@@ -56,6 +56,7 @@ const MagazineRegister = () => {
 
         const payload: Payload = {
             ...values,
+            views: 0,
             author,
             raw_title,
             createdAt,
@@ -132,33 +133,6 @@ const MagazineRegister = () => {
                     />
                     <FormField
                         control={form.control}
-                        name="textual_genre"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel>Gênero textual:</FormLabel>
-                                <FormControl>
-                                    <Input {...field} />
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
-                    <FormField
-                        control={form.control}
-                        name="source"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel>Fonte:</FormLabel>
-                                <FormControl>
-                                    <Input type="text" {...field} />
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
-
-                    <FormField
-                        control={form.control}
                         name="abstract"
                         render={({ field }) => (
                             <FormItem>
@@ -176,6 +150,32 @@ const MagazineRegister = () => {
                         render={({ field }) => (
                             <FormItem>
                                 <FormLabel>Link PDF:</FormLabel>
+                                <FormControl>
+                                    <Input {...field} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="source"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Referencias:</FormLabel>
+                                <FormControl>
+                                    <Input type="text" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="textual_genre"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Gênero textual:</FormLabel>
                                 <FormControl>
                                     <Input {...field} />
                                 </FormControl>

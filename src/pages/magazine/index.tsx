@@ -5,13 +5,22 @@ import { Button } from "@/components/ui/button";
 // Assets
 import { ArrowLeft, FileText } from "lucide-react"
 // Scripts
-import useGetMagazine from "./magazine.api"
+import { useGetMagazine, useViewMagazine } from "./magazine.api"
 import { Skeleton } from "@/components/ui/skeleton";
+import { useEffect } from "react";
 
 const Magazine = () => {
     const { magazineId } = useParams<{ magazineId: string }>()
 
     const { data, isLoading } = useGetMagazine(magazineId);
+
+    const { mutate } = useViewMagazine(magazineId);
+
+    useEffect(() => {
+        if (!isLoading && data) {
+            mutate(data.views)
+        }
+    }, [isLoading])
 
     if (!data || isLoading) return <Skeleton />
 

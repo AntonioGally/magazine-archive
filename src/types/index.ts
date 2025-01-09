@@ -6,6 +6,7 @@ export interface Magazine {
     source: string;
     title: string;
     textual_genre: string;
+    views: number;
     raw_title: string;
     createdAt: string;
     createdBy: string;

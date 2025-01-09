@@ -1,11 +1,13 @@
-import { collection, getDocs } from "firebase/firestore"
+import { collection, getDocs, orderBy, query } from "firebase/firestore"
 import { db } from "@/config/firebase"
 import { useQuery } from "@tanstack/react-query";
 import { Magazine } from "../../../../types";
 
 const useMagazineList = () => {
     async function fetchMagazines() {
-        const querySnapshot = await getDocs(collection(db, "magazine"));
+        const docRef = collection(db, "magazine");
+        const q = query(docRef, orderBy("createdAt", "desc"));
+        const querySnapshot = await getDocs(q);
 
         return querySnapshot.docs.
             map((doc) => ({

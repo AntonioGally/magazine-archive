@@ -16,7 +16,6 @@ const MagazineList = () => {
         <div className="mt-8">
             <div className="max-w-[730px]">
                 {data && data
-                    .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
                     .filter((magazine) =>
                         (title ? magazine.title.toLowerCase().includes(title) : true) &&
                         (author ? magazine.author.find((_author) => _author.toLowerCase().indexOf(author.toLowerCase()) > -1) : true) &&
