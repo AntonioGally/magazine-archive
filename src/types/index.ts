@@ -1,14 +1,12 @@
-import { FieldValue } from "firebase/firestore";
-
 export interface Magazine {
     id: string;
     abstract: string;
-    archive_link?: string;
     author: string[];
     pdf_link: string;
     source: string;
     title: string;
+    textual_genre: string;
     raw_title: string;
-    createdAt: FieldValue;
+    createdAt: string;
     createdBy: string;
 }

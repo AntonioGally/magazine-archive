@@ -30,10 +30,23 @@ export const columns: ColumnDef<Magazine>[] = [
     {
         accessorKey: "author",
         header: "Autor",
+        cell: ({ row }) => {
+            const authors = row.original.author;
+            return (
+                <div className="flex flex-wrap gap-1">
+                    {authors.map((author, index) => (
+                        <span className="p-1 rounded bg-slate-100 w-fit" key={index}>
+                            {author}
+                        </span>
+                    ))}
+                </div>
+            )
+        },
     },
     {
         accessorKey: "createdAt",
         header: "Criação",
+        cell: ({ row }) => new Date(row.original.createdAt).toLocaleDateString("pt-BR"),
     },
     {
         accessorKey: "createdBy",

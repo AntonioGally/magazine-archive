@@ -3,7 +3,7 @@ import { useState } from "react"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import { addDoc, collection, getDocs, query, serverTimestamp, where } from "firebase/firestore"
+import { addDoc, collection, FieldValue, getDocs, query, serverTimestamp, where } from "firebase/firestore"
 import { db } from "@/config/firebase"
 import { Link } from "react-router"
 import { useSelector } from "react-redux"
@@ -28,12 +28,16 @@ import { useToast } from "@/hooks/use-toast"
 
 const formSchema = z.object({
     title: z.string(),
-    source: z.string(),
-    abstract: z.string(),
     author: z.string(),
-    archive_link: z.string().optional(),
+    textual_genre: z.string(),
+    source: z.string(),
     pdf_link: z.string(),
+    abstract: z.string(),
+    archive_link: z.string().optional(),
 })
+interface Payload extends Omit<Magazine, "id" | "createdAt"> {
+    createdAt: FieldValue
+}
 
 const MagazineRegister = () => {
     const form = useForm<z.infer<typeof formSchema>>({
@@ -50,12 +54,11 @@ const MagazineRegister = () => {
         const author = values.author.split(";").map((author) => author.trim());
         const createdBy = userEmail || "admin";
 
-        const payload: Omit<Magazine, "id"> = {
+        const payload: Payload = {
             ...values,
             author,
             raw_title,
             createdAt,
-            archive_link: values.archive_link || "",
             createdBy
         }
 
@@ -82,7 +85,7 @@ const MagazineRegister = () => {
                     description: `Revista ${payload.title} cadastrada com sucesso`,
                 })
                 console.log("Document written with ID: ", data.id);
-                form.reset({ title: "", source: "", abstract: "", author: "", archive_link: "", pdf_link: "" });
+                form.reset({ title: "", author: "", textual_genre: "", source: "", abstract: "", archive_link: "", pdf_link: "" });
                 setTimeout(() => form.setFocus("title"), 0)
             })
             .catch((error) => console.error(error))
@@ -116,6 +119,32 @@ const MagazineRegister = () => {
                     />
                     <FormField
                         control={form.control}
+                        name="author"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Autor:</FormLabel>
+                                <FormControl>
+                                    <Input placeholder="Autor n1; Autor n2; ..." {...field} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="textual_genre"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Gênero textual:</FormLabel>
+                                <FormControl>
+                                    <Input {...field} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
                         name="source"
                         render={({ field }) => (
                             <FormItem>
@@ -127,6 +156,7 @@ const MagazineRegister = () => {
                             </FormItem>
                         )}
                     />
+
                     <FormField
                         control={form.control}
                         name="abstract"
@@ -142,36 +172,10 @@ const MagazineRegister = () => {
                     />
                     <FormField
                         control={form.control}
-                        name="author"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel>Autor:</FormLabel>
-                                <FormControl>
-                                    <Input placeholder="Autor n1; Autor n2; ..." {...field} />
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
-                    <FormField
-                        control={form.control}
                         name="pdf_link"
                         render={({ field }) => (
                             <FormItem>
                                 <FormLabel>Link PDF:</FormLabel>
-                                <FormControl>
-                                    <Input {...field} />
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
-                    <FormField
-                        control={form.control}
-                        name="archive_link"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel>Link da revista (opt):</FormLabel>
                                 <FormControl>
                                     <Input {...field} />
                                 </FormControl>

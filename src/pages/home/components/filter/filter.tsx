@@ -21,7 +21,7 @@ const Filter = () => {
 
     return (
         <div className="flex flex-col max-w-[550px] w-full mt-6">
-            <Label className="mb-1">Pesquisar pelo nome</Label>
+            <Label className="mb-1">Pesquisar por título</Label>
             <div className="flex flex-col md:flex-row md:items-center">
                 <Input autoFocus type="text" onChange={(e) => handleSearch(e.target.value, setTitle)} />
                 <div className="flex mt-2 md:mt-0 items-center">
