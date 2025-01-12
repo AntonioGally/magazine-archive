@@ -1,13 +1,15 @@
 import { Plus } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { DataTable } from "./data-table"
-import { columns } from "./columns"
+import useGetColumns from "./columns"
 import useMagazineList from "../home/components/magazine-list/magazine-list.api"
 import { Skeleton } from "@/components/ui/skeleton"
 import { Link } from "react-router"
 
 const Register = () => {
     const { data, isLoading } = useMagazineList();
+    const { getColumns } = useGetColumns();
+    
     return (
         <div className="w-full">
             <div className="flex items-center justify-between">
@@ -22,7 +24,7 @@ const Register = () => {
                 {!data || isLoading ? (
                     <Skeleton className="h-[125px] w-full mt-4" />
                 ) : (
-                    <DataTable data={data} columns={columns} />
+                    <DataTable data={data} columns={getColumns} />
                 )}
             </div>
         </div>

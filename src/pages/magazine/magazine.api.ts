@@ -52,7 +52,6 @@ export const useViewMagazine = (id: string | undefined) => {
             })
 
             queryClient.setQueryData(['magazines'], (old: Magazine[]) => {
-                console.log({ old })
                 return old.map(magazine => {
                     if (magazine.id === id) {
                         return {
