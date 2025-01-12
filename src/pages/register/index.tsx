@@ -14,10 +14,10 @@ const Register = () => {
         <div className="w-full">
             <div className="flex items-center justify-between">
                 <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
-                    Revistas cadastradas ({data?.length})
+                    Registered Articles ({data?.length})
                 </h3>
                 <Link to={"/register/new"}>
-                    <Button><Plus />Nova</Button>
+                    <Button><Plus />New</Button>
                 </Link>
             </div>
             <div className="mt-8">

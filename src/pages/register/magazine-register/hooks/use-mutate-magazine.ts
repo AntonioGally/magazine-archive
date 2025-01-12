@@ -50,7 +50,8 @@ const useMutateMagazine = (form: UseFormReturn) => {
             author,
             raw_title,
             createdAt,
-            createdBy
+            createdBy,
+            publication_year: values.publication_year ? Number(values.publication_year) : undefined,
         }
 
         const isMagazineExistent = await magazineExists(raw_title);
@@ -64,7 +65,16 @@ const useMutateMagazine = (form: UseFormReturn) => {
                     description: `Revista ${payload.title} cadastrada com sucesso`,
                 })
                 console.log("Document written with ID: ", data.id);
-                form.reset({ title: "", author: "", textual_genre: "", source: "", abstract: "", archive_link: "", pdf_link: "" });
+                form.reset({
+                    title: "",
+                    author: "",
+                    textual_genre: "",
+                    source: "",
+                    pdf_link: "",
+                    abstract: "",
+                    periodical_title: "",
+                    publication_year: "",
+                });
                 setTimeout(() => form.setFocus("title"), 0)
             })
             .catch((error) => console.error(error))
@@ -80,7 +90,8 @@ const useMutateMagazine = (form: UseFormReturn) => {
         const payload = {
             ...values,
             author,
-            raw_title
+            raw_title,
+            publication_year: values.publication_year ? Number(values.publication_year) : undefined,
         }
 
         const isMagazineExistent = originalData?.raw_title !== raw_title && await magazineExists(raw_title);

@@ -6,6 +6,8 @@ export interface Magazine {
     source: string;
     title: string;
     textual_genre: string;
+    periodical_title?: string;
+    publication_year?: number;
     views: number;
     raw_title: string;
     createdAt: string;

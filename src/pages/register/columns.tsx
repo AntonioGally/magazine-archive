@@ -33,7 +33,7 @@ const useGetColumns = () => {
         return [
             {
                 accessorKey: "title",
-                header: "Título",
+                header: "Title",
                 cell: ({ row }) => {
 
                     return (
@@ -51,7 +51,7 @@ const useGetColumns = () => {
             },
             {
                 accessorKey: "author",
-                header: "Autor",
+                header: "Author",
                 cell: ({ row }) => {
                     const authors = row.original.author;
                     return (
@@ -67,7 +67,7 @@ const useGetColumns = () => {
             },
             {
                 accessorKey: "createdAt",
-                header: "Criação",
+                header: "Created at",
                 cell: ({ row }) => (
                     <div className="min-w-[180px]">
                         {new Date(row.original.createdAt).toLocaleString("pt-BR")}
@@ -76,7 +76,7 @@ const useGetColumns = () => {
             },
             {
                 accessorKey: "createdBy",
-                header: "Criado por"
+                header: "Created by"
             },
             {
                 id: "actions",
@@ -87,7 +87,7 @@ const useGetColumns = () => {
                         <DropdownMenu>
                             <DropdownMenuTrigger asChild>
                                 <Button variant="ghost" className="h-8 w-8 p-0">
-                                    <span className="sr-only">Abrir menu</span>
+                                    <span className="sr-only">Open Menu</span>
                                     <MoreHorizontal className="h-4 w-4" />
                                 </Button>
                             </DropdownMenuTrigger>
@@ -95,11 +95,11 @@ const useGetColumns = () => {
                                 <DropdownMenuItem
                                     onClick={() => navigator.clipboard.writeText(magazine.id)}
                                 >
-                                    Copiar ID
+                                    Copy ID
                                 </DropdownMenuItem>
                                 <DropdownMenuSeparator />
-                                <DropdownMenuItem onClick={() => navigate(`/register/${magazine.id}`)}>Editar registro</DropdownMenuItem>
-                                <DropdownMenuItem onClick={() => deleteMagazine(magazine.id)}>Deletar registro</DropdownMenuItem>
+                                <DropdownMenuItem onClick={() => navigate(`/register/${magazine.id}`)}>Edit</DropdownMenuItem>
+                                <DropdownMenuItem onClick={() => deleteMagazine(magazine.id)}>Delete</DropdownMenuItem>
                             </DropdownMenuContent>
                         </DropdownMenu>
                     )

@@ -14,12 +14,12 @@ import { Link, useLocation } from "react-router"
 
 const items = [
     {
-        title: "Painel",
+        title: "Panel",
         url: "/panel",
         icon: Home,
     },
     {
-        title: "Cadastro",
+        title: "Register",
         url: "/register",
         icon: Archive,
     }
@@ -36,7 +36,7 @@ const PanelSidebar = () => {
         <Sidebar>
             <SidebarContent>
                 <SidebarGroup>
-                    <SidebarGroupLabel>Aplicação</SidebarGroupLabel>
+                    <SidebarGroupLabel>Aplication</SidebarGroupLabel>
                     <SidebarGroupContent>
                         <SidebarMenu>
                             {items.map((item) => (

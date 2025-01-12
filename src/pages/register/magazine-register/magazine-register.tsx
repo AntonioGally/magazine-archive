@@ -30,6 +30,8 @@ export const formSchema = z.object({
     source: z.string(),
     pdf_link: z.string(),
     abstract: z.string(),
+    periodical_title: z.string().optional(),
+    publication_year: z.string().optional(),
 })
 
 const MagazineRegister = () => {
@@ -53,7 +55,9 @@ const MagazineRegister = () => {
             textual_genre: data.textual_genre,
             source: data.source,
             pdf_link: data.pdf_link,
-            abstract: data.abstract
+            abstract: data.abstract,
+            periodical_title: data.periodical_title,
+            publication_year: data.publication_year ? String(data.publication_year) : undefined
         });
     }, [magazineId, data, form]);
 
@@ -71,86 +75,123 @@ const MagazineRegister = () => {
                 <Skeleton className="h-[125px] w-full mt-4" />
             ) : (
                 <Form {...form}>
-                    <form onSubmit={form.handleSubmit((values) => magazineId ? updateMagazine(values, data || null) : createMagazine(values))} className="mt-8 space-y-4 max-w-[400px]">
-                        <FormField
-                            control={form.control}
-                            name="title"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Title:</FormLabel>
-                                    <FormControl>
-                                        <Input autoFocus type="text" {...field} />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                        <FormField
-                            control={form.control}
-                            name="author"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Author:</FormLabel>
-                                    <FormControl>
-                                        <Input placeholder="Autor n1; Autor n2; ..." {...field} />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                        <FormField
-                            control={form.control}
-                            name="abstract"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Abstract:</FormLabel>
-                                    <FormControl>
-                                        <Textarea {...field} />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                        <FormField
-                            control={form.control}
-                            name="pdf_link"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>PDF Link:</FormLabel>
-                                    <FormControl>
-                                        <Input {...field} />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                        <FormField
-                            control={form.control}
-                            name="source"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>References:</FormLabel>
-                                    <FormControl>
-                                        <Input type="text" {...field} />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                        <FormField
-                            control={form.control}
-                            name="textual_genre"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Textual Genre:</FormLabel>
-                                    <FormControl>
-                                        <Input {...field} />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                        <Button type="submit" disabled={loading}>{magazineId ? "Edit" : "Save"}</Button>
+                    <form
+                        onSubmit={form.handleSubmit((values) => magazineId ? updateMagazine(values, data || null) : createMagazine(values))}
+                        className="mt-8"
+                    >
+                        <div className="flex space-x-8 items-start">
+                            <div className="space-y-4 min-w-[400px]">
+                                <FormField
+                                    control={form.control}
+                                    name="title"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Title:</FormLabel>
+                                            <FormControl>
+                                                <Input autoFocus type="text" {...field} />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="author"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Author:</FormLabel>
+                                            <FormControl>
+                                                <Input placeholder="Autor n1; Autor n2; ..." {...field} />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="abstract"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Abstract:</FormLabel>
+                                            <FormControl>
+                                                <Textarea rows={9} {...field} />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                            </div>
+                            <div className="space-y-4 min-w-[400px]">
+                                <FormField
+                                    control={form.control}
+                                    name="pdf_link"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>PDF Link:</FormLabel>
+                                            <FormControl>
+                                                <Input {...field} />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="source"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>References:</FormLabel>
+                                            <FormControl>
+                                                <Input type="text" {...field} />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="periodical_title"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Periodical Title:</FormLabel>
+                                            <FormControl>
+                                                <Input type="text" {...field} />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="publication_year"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Publication Year:</FormLabel>
+                                            <FormControl>
+                                                <Input type="number" {...field} />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="textual_genre"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Textual Genre:</FormLabel>
+                                            <FormControl>
+                                                <Input {...field} />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                            </div>
+                        </div>
+                        <Button className="mt-8" type="submit" disabled={loading}>
+                            {magazineId ? "Edit" : "Save"}
+                        </Button>
                     </form>
                 </Form>
             )}

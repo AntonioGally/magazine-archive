@@ -30,7 +30,7 @@ const Magazine = () => {
             <div className="flex flex-col md:flex-row md:items-center justify-between">
                 <div className="flex flex-col md:flex-row md:items-center">
                     <Link to={"/"}>
-                        <Button className="mr-4" variant={"outline"}><ArrowLeft />Voltar</Button>
+                        <Button className="mr-4" variant={"outline"}><ArrowLeft />Go Back</Button>
                     </Link>
                     <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
                         {data.title}
@@ -45,15 +45,15 @@ const Magazine = () => {
             {/* content */}
             <div className="mt-8 space-y-4">
                 <div>
-                    <span className="font-semibold text-lg">Autores:</span>
+                    <span className="font-semibold text-lg">Authors:</span>
                     <p className="leading-7">{data.author.join("; ")}</p>
                 </div>
                 <div>
-                    <span className="font-semibold text-lg">Resumo:</span>
+                    <span className="font-semibold text-lg">Abstract:</span>
                     <p className="leading-7">{data.abstract}</p>
                 </div>
                 <div>
-                    <span className="font-semibold text-lg break-words">Fonte:</span>
+                    <span className="font-semibold text-lg break-words">Reference:</span>
                     <p className="leading-7">{data.source}</p>
                 </div>
             </div>

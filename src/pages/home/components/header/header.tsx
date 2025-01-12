@@ -13,7 +13,7 @@ const Header = () => {
             </h1>
             <div>
                 <Link to={"/login"}>
-                    <Button className="mt-2 md:ml-2 md:mt-0" variant={"default"}>{isAuthenticated ? "Painel" : "Login"}</Button>
+                    <Button className="mt-2 md:ml-2 md:mt-0" variant={"default"}>{isAuthenticated ? "Panel" : "Login"}</Button>
                 </Link>
             </div>
         </div>
