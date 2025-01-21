@@ -9,7 +9,7 @@ const Header = () => {
     return (
         <div className="flex items-center justify-between">
             <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
-                History journals in Brazil
+                Index of Brazilian historical journals
             </h1>
             <div>
                 <Link to={"/login"}>

@@ -4,7 +4,7 @@ import { Eye } from "lucide-react";
 
 const MagazineItem = ({ title, author, abstract, id, views }: Magazine) => {
 
-    function formatBastract(abstract: string) {
+    function formatAbstract(abstract: string) {
         return abstract.length > 180 ? `${abstract.slice(0, 180)}...` : abstract
     }
 
@@ -25,7 +25,7 @@ const MagazineItem = ({ title, author, abstract, id, views }: Magazine) => {
                 </div>
 
                 <p className="leading-7">
-                    {formatBastract(abstract)}
+                    {formatAbstract(abstract)}
                 </p>
 
                 <div className="h-[1px] w-full bg-slate-200 mt-3" />

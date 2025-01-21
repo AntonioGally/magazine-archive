@@ -6,8 +6,8 @@ const PanelLayout = () => {
     return (
         <SidebarProvider>
             <PanelSidebar />
-            <main className="flex w-full">
-                <div className="p-4 w-full h-full">
+            <main className="w-full">
+                <div className="p-4 h-full">
                     <Outlet />
                 </div>
             </main>

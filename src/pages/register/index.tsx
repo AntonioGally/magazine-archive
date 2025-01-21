@@ -5,11 +5,12 @@ import useGetColumns from "./columns"
 import useMagazineList from "../home/components/magazine-list/magazine-list.api"
 import { Skeleton } from "@/components/ui/skeleton"
 import { Link } from "react-router"
+import { TooltipProvider } from "@/components/ui/tooltip"
 
 const Register = () => {
     const { data, isLoading } = useMagazineList();
     const { getColumns } = useGetColumns();
-    
+
     return (
         <div className="w-full">
             <div className="flex items-center justify-between">
@@ -20,12 +21,14 @@ const Register = () => {
                     <Button><Plus />New</Button>
                 </Link>
             </div>
-            <div className="mt-8">
-                {!data || isLoading ? (
-                    <Skeleton className="h-[125px] w-full mt-4" />
-                ) : (
-                    <DataTable data={data} columns={getColumns} />
-                )}
+            <div className="mt-8" style={{ width: "calc(100vw - 18rem)" }}>
+                <TooltipProvider>
+                    {!data || isLoading ? (
+                        <Skeleton className="h-[125px] w-full mt-4" />
+                    ) : (
+                        <DataTable data={data} columns={getColumns} />
+                    )}
+                </TooltipProvider>
             </div>
         </div>
     )

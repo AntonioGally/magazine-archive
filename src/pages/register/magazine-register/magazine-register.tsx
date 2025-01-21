@@ -168,7 +168,7 @@ const MagazineRegister = () => {
                                         <FormItem>
                                             <FormLabel>Publication Year:</FormLabel>
                                             <FormControl>
-                                                <Input type="number" {...field} />
+                                                <Input type="text" {...field} />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
