@@ -28,14 +28,14 @@ const Filter = () => {
                     <Popover>
 
                         <PopoverTrigger asChild>
-                            <Button className="md:ml-3" variant={isFilterActive ? "default" : 'secondary'}><ListFilter />Filtros</Button>
+                            <Button className="md:ml-3" variant={isFilterActive ? "default" : 'secondary'}><ListFilter />Filters</Button>
                         </PopoverTrigger>
 
                         <PopoverContent className="w-80">
                             <div className="grid gap-4">
                                 <div className="grid gap-2">
                                     <div className="grid grid-cols-3 items-center gap-4">
-                                        <Label htmlFor="width">Resumo</Label>
+                                        <Label htmlFor="width">Abstract</Label>
                                         <Input
                                             defaultValue={abstract}
                                             onChange={(e) => handleSearch(e.target.value, setAbstract)}
@@ -43,7 +43,7 @@ const Filter = () => {
                                         />
                                     </div>
                                     <div className="grid grid-cols-3 items-center gap-4">
-                                        <Label htmlFor="maxWidth">Autor</Label>
+                                        <Label htmlFor="maxWidth">Author</Label>
                                         <Input
                                             defaultValue={author}
                                             onChange={(e) => handleSearch(e.target.value, setAuthor)}

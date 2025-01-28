@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/table"
 import { DataTablePagination } from "@/components/ui/data-table-pagination"
 import { useState } from "react"
+import useMagazineList from "../home/components/magazine-list/magazine-list.api"
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
@@ -27,7 +28,13 @@ export function DataTable<TData, TValue>({
     data,
 }: DataTableProps<TData, TValue>) {
     const [sorting, setSorting] = useState<{ id: string; desc: boolean }[]>([])
-    
+
+    const {
+        isFetchingNextPage,
+        fetchNextPage,
+        hasNextPage
+    } = useMagazineList();
+
     const table = useReactTable({
         data,
         columns,
@@ -87,7 +94,7 @@ export function DataTable<TData, TValue>({
                 </Table>
             </div>
             <div className="mt-4">
-                <DataTablePagination table={table} />
+                <DataTablePagination table={table} hasNextPage={hasNextPage} loadMoreFn={fetchNextPage} isFetching={isFetchingNextPage} />
             </div>
         </div>
     )

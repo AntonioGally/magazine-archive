@@ -88,7 +88,7 @@ const MagazineRegister = () => {
                                         <FormItem>
                                             <FormLabel>Title:</FormLabel>
                                             <FormControl>
-                                                <Input autoFocus type="text" {...field} />
+                                                <Textarea autoFocus rows={3} {...field} />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -101,7 +101,7 @@ const MagazineRegister = () => {
                                         <FormItem>
                                             <FormLabel>Author:</FormLabel>
                                             <FormControl>
-                                                <Input placeholder="Autor n1; Autor n2; ..." {...field} />
+                                                <Textarea rows={3} placeholder="Autor n1; Autor n2; ..." {...field} />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -142,7 +142,7 @@ const MagazineRegister = () => {
                                         <FormItem>
                                             <FormLabel>References:</FormLabel>
                                             <FormControl>
-                                                <Input type="text" {...field} />
+                                                <Textarea rows={5} {...field} />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
