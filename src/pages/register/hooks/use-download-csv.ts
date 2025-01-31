@@ -1,27 +1,23 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, orderBy, query } from 'firebase/firestore';
 import { db } from '@/config/firebase';
 import { exportToCSV } from '@/lib/utils';
 import { useState } from 'react';
-
-interface Document {
-    id: string; // Firestore document ID
-    [key: string]: any; // Other fields in the document
-}
+import { Magazine } from '@/types';
 
 const collectionName = 'magazine';
 
 const useDownloadCSV = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
-    const fetchDocuments = async (): Promise<Document[]> => {
+    const fetchDocuments = async (): Promise<Magazine[]> => {
         const docRef = collection(db, collectionName);
-        const querySnapshot = await getDocs(docRef);
 
+        const q = query(docRef, orderBy('createdAt', 'desc'));
+
+        const querySnapshot = await getDocs(q);
         return querySnapshot.docs.map((doc) => ({
-            id: doc.id,
-            ...doc.data(),
+            _id: doc.id,
+            ...doc.data() as Magazine,
         }));
     };
 

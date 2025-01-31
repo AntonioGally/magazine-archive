@@ -1,4 +1,4 @@
-import { Home, Archive } from "lucide-react"
+import { Home, Archive, LogOut } from "lucide-react"
 
 import {
     Sidebar,
@@ -22,6 +22,11 @@ const items = [
         title: "Register",
         url: "/register",
         icon: Archive,
+    },
+    {
+        title: "Logout",
+        url: "/logout",
+        icon: LogOut,
     }
 ]
 
